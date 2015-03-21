@@ -1,5 +1,6 @@
 package net.noxinc.units;
 
-public class Player {
+public class Player 
+{
 
 }
