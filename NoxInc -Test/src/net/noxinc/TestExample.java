@@ -15,15 +15,8 @@ public class TestExample
 		Player p1 = new Player(a1, 2, 2);
 		
 		a1.createCellAtLocation(new Cell('x', "TestSolid") .setSolidness(true), 3, 3);
-		a1.createCellAtLocation(new Cell('H', "Healing Pot")
-		{
-			@Override
-			public void onArrival()
-			{
-				p1.setHealth(p1.getHealth() + 5);
-				System.out.println(p1.getHealth());
-			}
-		}, 3, 0);
+		a1.createCellAtLocation(new Cell('H', "Healing Pot").setHealing(5), 3, 0);
+		a1.createCellAtLocation(new Cell('!', "Mine").setDamage(10), 4, 4);
 		a1.drawMap();
 		
 		while(p1.getHealth() > 0)
