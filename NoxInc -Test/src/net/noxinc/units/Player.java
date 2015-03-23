@@ -1,7 +1,7 @@
 package net.noxinc.units;
 
-import net.noxinc.world.Cell;
 import net.noxinc.world.Map;
+import net.noxinc.world.cells.Cell;
 
 public class Player extends Cell
 {

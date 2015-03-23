@@ -1,4 +1,4 @@
-package net.noxinc.world;
+package net.noxinc.world.cells;
 
 import net.noxinc.units.Player;
 

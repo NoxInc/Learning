@@ -1,5 +1,7 @@
 package net.noxinc.world;
 
+import net.noxinc.world.cells.Cell;
+
 public class Map 
 {
 	private Cell[][] board;

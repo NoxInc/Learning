@@ -3,8 +3,8 @@ package net.noxinc;
 import java.util.Scanner;
 
 import net.noxinc.units.Player;
-import net.noxinc.world.Cell;
 import net.noxinc.world.Map;
+import net.noxinc.world.cells.Cell;
 
 public class TestExample 
 {
