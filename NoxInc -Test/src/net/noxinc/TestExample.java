@@ -36,6 +36,9 @@ public class TestExample
 			case 4:
 				p1.moveTo(0, -1);
 				break;
+			case 5:
+				p1.drawInventory();
+				break;
 			default:
 				System.out.println("No valid option");
 			}

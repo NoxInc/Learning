@@ -6,6 +6,7 @@ public class Cell
 {
 	private char symbol;
 	private boolean solid;
+	private boolean collect;
 	private int dmg;
 	private int heal;
 	private String name;
@@ -29,6 +30,9 @@ public class Cell
 		}else if(heal > 0)
 		{
 			player.setHealth(player.getHealth() + heal);
+		}else if(isCollectable())
+		{
+			player.addToInventory(this);
 		}
 	}
 	
@@ -47,6 +51,11 @@ public class Cell
 		return solid;
 	}
 	
+	public boolean isCollectable()
+	{
+		return collect;
+	}
+	
 	public Cell setSolidness(boolean value)
 	{
 		solid = value;
@@ -62,6 +71,12 @@ public class Cell
 	public Cell setHealing(int heal)
 	{
 		this.heal = heal;
+		return this;
+	}
+	
+	public Cell setCollect(boolean value)
+	{
+		collect = value;
 		return this;
 	}
 	

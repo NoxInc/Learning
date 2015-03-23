@@ -7,8 +7,9 @@ public class Player extends Cell
 {
 	private int x;
 	private int y;
-	private Map map;
 	private int health;
+	private Cell[] inventory = new Cell[5];
+	private Map map;
 	
 	public Player(Map map, int x, int y)
 	{
@@ -54,5 +55,34 @@ public class Player extends Cell
 	public void setHealth(int hp)
 	{
 		health = hp;
+	}
+	
+	public void addToInventory(Cell cell)
+	{
+		for(int i = 0; i < inventory.length; i++)
+		{
+			if(inventory[i] == null)
+			{
+				inventory[i] = cell;
+			}
+		}
+	}
+	
+	public void drawInventory()
+	{
+		String tmp = " ";
+		String tmp2 = "";
+		for(int i = 0; i < inventory.length; i++)
+		{
+			tmp += "_ ";
+			tmp2 += "|";
+			if(inventory[i] == null)
+			{
+				tmp2 += " ";
+			}else{
+				tmp2 += inventory[i].getSymbol();
+			}
+		}
+		System.out.println(tmp + "\n" + tmp2 + "|");
 	}
 }
