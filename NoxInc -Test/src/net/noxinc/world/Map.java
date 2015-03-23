@@ -3,17 +3,20 @@ package net.noxinc.world;
 public class Map 
 {
 	private Cell[][] board;
+	private int xLength;
+	private int yLength;
 	
 	public Map(int x, int y)
 	{
 		board = new Cell[y][x];
+		xLength = x;
+		yLength = y;
 		createMap();
 	}
 	
 	public Map()
 	{
-		board = new Cell[5][5];
-		createMap();
+		this(5, 5);
 	}
 	
 	public void drawMap()
@@ -41,7 +44,7 @@ public class Map
 		{
 			for(int y = 1; y < board[x].length - 1; y++)
 			{
-				createCellAtLocation(new Cell(' '),x , y);
+				createCellAtLocation(new Cell(' ', ""),x , y);
 			}
 		}
 	}
@@ -49,6 +52,21 @@ public class Map
 	public void createCellAtLocation(Cell cell, int x, int y)
 	{
 		board[x][y] = cell;
+	}
+	
+	public Cell getCellAtPosition(int x, int y)
+	{
+		return board[x][y];
+	}
+	
+	public int getXLength()
+	{
+		return xLength;
+	}
+	
+	public int getYLength()
+	{
+		return yLength;
 	}
 
 }
