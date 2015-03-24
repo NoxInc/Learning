@@ -41,7 +41,7 @@ public class TestExample
 				break;
 			case 5:
 				a1.drawMap(p1);
-				p1.drawInventory();
+				p1.getInventory().drawInventory();
 				break;
 			default:
 				System.out.println("No valid option");
