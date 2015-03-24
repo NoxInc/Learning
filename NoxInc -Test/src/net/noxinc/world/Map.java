@@ -46,10 +46,10 @@ public class Map
 				tmp += "  " + "___________";
 			}else if(y == 1)
 			{
-				tmp += "  " + "Health: " +  player.getHealth();
+				tmp += " |" + "Health: " +  player.getHealth();
 			}else if(y == 2)
 			{
-				tmp += "  " + "Luck: ";
+				tmp += " |" + "Luck: ";
 			}
 			tmp += "\n";
 		}
