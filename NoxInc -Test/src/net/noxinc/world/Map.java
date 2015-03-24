@@ -1,5 +1,6 @@
 package net.noxinc.world;
 
+import net.noxinc.units.Player;
 import net.noxinc.world.cells.Cell;
 
 public class Map 
@@ -21,19 +22,34 @@ public class Map
 		this(5, 5);
 	}
 	
-	public void drawMap()
+	public void drawMap(Player player)
 	{
 		String tmp = "";
-		for(int x = 0; x < board.length; x++)
+		for(int y = 0; y < board.length; y++)
 		{
-			for(int y = 0; y < board[x].length; y++)
+			for(int x = 0; x < board[y].length; x++)
 			{
-				if(board[x][y] == null)
+				if(board[y][x] == null)
 				{
 					tmp += ".";
 				}else{
-					tmp += board[x][y].getSymbol();
+					if(board[y][x] instanceof Player)
+					{
+						tmp += "P";
+					}else{
+						tmp += board[y][x].getSymbol();
+					}
 				}
+			}
+			if(y == 0)
+			{
+				tmp += "  " + "___________";
+			}else if(y == 1)
+			{
+				tmp += "  " + "Health: " +  player.getHealth();
+			}else if(y == 2)
+			{
+				tmp += "  " + "Luck: ";
 			}
 			tmp += "\n";
 		}
@@ -42,9 +58,9 @@ public class Map
 	
 	public void createMap()
 	{
-		for(int x = 1; x < board.length - 1; x++)
+		for(int y = 1; y < board.length - 1; y++)
 		{
-			for(int y = 1; y < board[x].length - 1; y++)
+			for(int x = 1; x < board[y].length - 1; x++)
 			{
 				createCellAtLocation(new Cell(' ', ""),x , y);
 			}
@@ -53,12 +69,12 @@ public class Map
 	
 	public void createCellAtLocation(Cell cell, int x, int y)
 	{
-		board[x][y] = cell;
+		board[y][x] = cell;
 	}
 	
 	public Cell getCellAtPosition(int x, int y)
 	{
-		return board[x][y];
+		return board[y][x];
 	}
 	
 	public int getXLength()
