@@ -24,6 +24,7 @@ public class TestExample
 		while(p1.getHealth() > 0)
 		{
 			int tmp = myScanner.nextInt();
+//			a1.drawMap(p1);
 			switch(tmp)
 			{
 			case 1:
@@ -39,12 +40,13 @@ public class TestExample
 				p1.moveTo(-1, 0);
 				break;
 			case 5:
+				a1.drawMap(p1);
 				p1.drawInventory();
 				break;
 			default:
 				System.out.println("No valid option");
 			}
-			a1.drawMap(p1);
+			System.out.println(p1.getFacing());
 		}
 		Dialogs.status("You deaded :P");
 	}

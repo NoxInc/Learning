@@ -8,6 +8,7 @@ public class Player extends Cell
 	private int x;
 	private int y;
 	private int health;
+	private int facing;
 	private Cell[] inventory = new Cell[5];
 	private Map map;
 	
@@ -28,6 +29,21 @@ public class Player extends Cell
 	
 	public void moveTo(int offsetX, int offsetY)
 	{
+		if(offsetX == 0 && offsetY == -1)
+		{
+			this.facing = 1;
+		}else if(offsetX == 0 && offsetY == 1)
+		{
+			this.facing = 2;
+		}else if(offsetX == 1 && offsetY == 0)
+		{
+			this.facing = 3;
+		}else if(offsetX == -1 && offsetY == 0)
+		{
+			this.facing = 4;
+		}else{
+			System.out.println("Invalid movement" + facing + " " + offsetX + " " + offsetY);
+		}
 		if((!(x + offsetX > map.getYLength() - 1 || x + offsetX < 0) && !(y + offsetY > map.getXLength() - 1 || y + offsetY < 0)))
 		{
 			if(map.getCellAtPosition(x + offsetX, y + offsetY) == null || map.getCellAtPosition(x + offsetX, y + offsetY).isSolid())
@@ -41,6 +57,7 @@ public class Player extends Cell
 				map.createCellAtLocation(new Cell(' ', ""), x, y);
 				x += offsetX;
 				y += offsetY;
+				map.drawMap(this);
 			}
 		}else{
 			System.out.println("Reached end of map");
@@ -50,6 +67,11 @@ public class Player extends Cell
 	public int getHealth()
 	{
 		return health;
+	}
+	
+	public int getFacing()
+	{
+		return facing;
 	}
 	
 	public void setHealth(int hp)
@@ -73,6 +95,7 @@ public class Player extends Cell
 	{
 		String tmp = " ";
 		String tmp2 = "";
+		map.drawMap(this);
 		for(int i = 0; i < inventory.length; i++)
 		{
 			tmp += "_ ";
