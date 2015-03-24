@@ -1,5 +1,6 @@
 package net.noxinc.world.cells;
 
+import net.noxinc.status.Dialogs;
 import net.noxinc.units.Player;
 
 public class Cell 
@@ -27,9 +28,11 @@ public class Cell
 		if(dmg > 0)
 		{
 			player.setHealth(player.getHealth() - dmg);
+			Dialogs.status("You lost " + dmg + "HP! ");
 		}else if(heal > 0)
 		{
 			player.setHealth(player.getHealth() + heal);
+			Dialogs.status("You healed by " + heal + "HP! ");
 		}else if(isCollectable())
 		{
 			player.addToInventory(this);
