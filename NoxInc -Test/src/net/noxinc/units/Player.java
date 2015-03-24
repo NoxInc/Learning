@@ -64,6 +64,7 @@ public class Player extends Cell
 			if(inventory[i] == null)
 			{
 				inventory[i] = cell;
+				break;
 			}
 		}
 	}
