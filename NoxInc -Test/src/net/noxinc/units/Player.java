@@ -1,5 +1,6 @@
 package net.noxinc.units;
 
+import net.noxinc.inventory.Inventory;
 import net.noxinc.world.Map;
 import net.noxinc.world.cells.Cell;
 
@@ -9,7 +10,7 @@ public class Player extends Cell
 	private int y;
 	private int health;
 	private int facing;
-	private Cell[] inventory = new Cell[5];
+	private Inventory inventory;
 	private Map map;
 	
 	public Player(Map map, int x, int y)
@@ -20,6 +21,7 @@ public class Player extends Cell
 		this.x = x;
 		this.y = y;
 		this.map = map;
+		inventory = new Inventory(5);
 	}
 	
 	private void spawnPlayer(Map map, int x, int y)
@@ -74,39 +76,13 @@ public class Player extends Cell
 		return facing;
 	}
 	
+	public Inventory getInventory()
+	{
+		return inventory;
+	}
+	
 	public void setHealth(int hp)
 	{
 		health = hp;
-	}
-	
-	public void addToInventory(Cell cell)
-	{
-		for(int i = 0; i < inventory.length; i++)
-		{
-			if(inventory[i] == null)
-			{
-				inventory[i] = cell;
-				break;
-			}
-		}
-	}
-	
-	public void drawInventory()
-	{
-		String tmp = " ";
-		String tmp2 = "";
-		map.drawMap(this);
-		for(int i = 0; i < inventory.length; i++)
-		{
-			tmp += "_ ";
-			tmp2 += "|";
-			if(inventory[i] == null)
-			{
-				tmp2 += " ";
-			}else{
-				tmp2 += inventory[i].getSymbol();
-			}
-		}
-		System.out.println(tmp + "\n" + tmp2 + "|");
 	}
 }
