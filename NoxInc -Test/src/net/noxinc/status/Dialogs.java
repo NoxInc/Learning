@@ -15,4 +15,9 @@ public class Dialogs
 		
 		System.out.println(tmp += msg + "|\n" + tmp2 + "-");
 	}
+	
+	public static void inventory1()
+	{
+		System.out.println(" Select item by typing its index.\n 0. Exit");
+	}
 }
