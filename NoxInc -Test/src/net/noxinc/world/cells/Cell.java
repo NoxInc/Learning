@@ -35,8 +35,13 @@ public class Cell
 			Dialogs.status("You healed by " + heal + "HP! ");
 		}else if(isCollectable())
 		{
-			player.addToInventory(this);
+			player.getInventory().addToInventory(this);
 		}
+	}
+	
+	public void use(Player player)
+	{
+		
 	}
 	
 	public char getSymbol()
