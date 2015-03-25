@@ -46,7 +46,6 @@ public class TestExample
 			default:
 				System.out.println("No valid option");
 			}
-			System.out.println(p1.getFacing());
 		}
 		Dialogs.status("You deaded :P");
 	}
