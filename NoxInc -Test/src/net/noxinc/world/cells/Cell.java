@@ -39,6 +39,11 @@ public class Cell
 		}
 	}
 	
+	public void use(Player player)
+	{
+		
+	}
+	
 	public char getSymbol()
 	{
 		return symbol;
