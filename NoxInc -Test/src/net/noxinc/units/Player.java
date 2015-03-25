@@ -21,7 +21,7 @@ public class Player extends Cell
 		this.x = x;
 		this.y = y;
 		this.map = map;
-		inventory = new Inventory(5);
+		inventory = new Inventory(5, this);
 	}
 	
 	private void spawnPlayer(Map map, int x, int y)
@@ -74,6 +74,11 @@ public class Player extends Cell
 	public int getFacing()
 	{
 		return facing;
+	}
+	
+	public Map getMap()
+	{
+		return map;
 	}
 	
 	public Inventory getInventory()
