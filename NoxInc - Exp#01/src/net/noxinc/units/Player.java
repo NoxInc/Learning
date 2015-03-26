@@ -41,4 +41,9 @@ public class Player
 	{
 		return map;
 	}
+	
+	public int getFacingDirection()
+	{
+		return facingDirection;
+	}
 }
