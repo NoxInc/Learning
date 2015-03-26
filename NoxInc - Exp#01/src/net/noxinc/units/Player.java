@@ -41,6 +41,29 @@ public class Player
 		}
 	}
 	
+	public void mine(int direction)
+	{
+		switch(direction)
+		{
+		case 1:
+			if(map.getCell(x, y - 1).isMineable())
+				map.setCell(new Cell(' ', "Air"), x, y - 1);
+			break;
+		case 2:
+			if(map.getCell(x, y + 1).isMineable())
+				map.setCell(new Cell(' ', "Air"), x, y + 1);
+			break;
+		case 3:
+			if(map.getCell(x + 1, y).isMineable())
+				map.setCell(new Cell(' ', "Air"), x + 1, y);
+			break;
+		case 4:
+			if(map.getCell(x - 1, y).isMineable())
+				map.setCell(new Cell(' ', "Air"), x - 1, y);
+			break;
+		}
+	}
+	
 	public int getX()
 	{
 		return x;
