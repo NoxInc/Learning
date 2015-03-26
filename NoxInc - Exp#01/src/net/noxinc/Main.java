@@ -15,7 +15,7 @@ public class Main
 		Player p1 = new Player("NoxInc", InitMap.registerMap(new Map("Debug")), 2, 2);
 		
 		p1.getMap().setCell(new Cell('H', "HP-Pot").setCollectable(), 4, 4);
-		p1.getMap().setCell(new Cell('+', "Wall").setSolid(), 4, 5);
+		p1.getMap().setCell(new Cell('+', "Wall").setSolid().setMineable(), 4, 5);
 		
 		p1.getMap().updateMap();
 		
@@ -34,6 +34,8 @@ public class Main
 				break;
 			case 4:
 				p1.moveTo(-1, 0, 4);
+			case 5:
+				p1.mine(input.nextInt());
 			}
 			p1.getMap().updateMap();
 		}
