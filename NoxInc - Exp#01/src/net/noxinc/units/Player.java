@@ -2,6 +2,7 @@ package net.noxinc.units;
 
 import java.util.Scanner;
 
+import net.noxinc.units.inventory.Inventory;
 import net.noxinc.world.Map;
 import net.noxinc.world.cells.Cell;
 
@@ -9,6 +10,8 @@ public class Player
 {
 	private Map map;
 	private String name;
+	private Inventory inventory = new Inventory(5, this);
+	private int health = 10;
 	private int facingDirection;
 	private int x;
 	private int y;
@@ -30,7 +33,8 @@ public class Player
 		{
 			if(map.getCell(x + oX, y + oY).isCollectable())
 			{
-				map.setCell(new Cell(' ', "Air"), x + oX, y + oY);
+				inventory.addToInventory(map.getCell(x + oX, y + oY));
+				map.setCell(new Cell(' ', "Air", map), x + oX, y + oY);
 			}else{
 				if(map.getCell(x + oX, y + oY).isSolid())
 				{
@@ -58,8 +62,12 @@ public class Player
 			break;
 		case 4:
 			moveTo(-1, 0, 4);
+			break;
 		case 5:
 			mine(scanner.nextInt());
+			break;
+		case 6:
+			inventory.open();
 		}
 	}
 	
@@ -69,21 +77,26 @@ public class Player
 		{
 		case 1:
 			if(map.getCell(x, y - 1).isMineable())
-				map.setCell(new Cell(' ', "Air"), x, y - 1);
+				map.setCell(new Cell(' ', "Air", map), x, y - 1);
 			break;
 		case 2:
 			if(map.getCell(x, y + 1).isMineable())
-				map.setCell(new Cell(' ', "Air"), x, y + 1);
+				map.setCell(new Cell(' ', "Air", map), x, y + 1);
 			break;
 		case 3:
 			if(map.getCell(x + 1, y).isMineable())
-				map.setCell(new Cell(' ', "Air"), x + 1, y);
+				map.setCell(new Cell(' ', "Air", map), x + 1, y);
 			break;
 		case 4:
 			if(map.getCell(x - 1, y).isMineable())
-				map.setCell(new Cell(' ', "Air"), x - 1, y);
+				map.setCell(new Cell(' ', "Air", map), x - 1, y);
 			break;
 		}
+	}
+	
+	public void modifyHpBy(int amount)
+	{
+		health += amount;
 	}
 	
 	public int getX()
@@ -99,6 +112,11 @@ public class Player
 	public Map getMap()
 	{
 		return map;
+	}
+	
+	public int getHealth()
+	{
+		return health;
 	}
 	
 	public int getFacingDirection()

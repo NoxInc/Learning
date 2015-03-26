@@ -29,6 +29,7 @@ public class Map
 	public void updateMap()
 	{
 		String tmp = "";
+		System.out.println(player.getHealth());
 		for(int y = 0; y < board.length; y++)
 		{
 			for(int x = 0; x < board[y].length; x++)
@@ -64,7 +65,7 @@ public class Map
 		{
 			for(int x = 1; x < board[y].length - 1; x++)
 			{
-				board[y][x] = new Cell(' ', "Air");
+				board[y][x] = new Cell(' ', "Air", this);
 			}
 		}
 	}
