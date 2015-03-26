@@ -25,4 +25,9 @@ public class Player
 	{
 		return y;
 	}
+	
+	public Map getMap()
+	{
+		return map;
+	}
 }
