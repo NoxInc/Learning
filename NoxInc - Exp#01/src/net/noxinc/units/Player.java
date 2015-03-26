@@ -29,6 +29,12 @@ public class Player
 			if(map.getCell(x + oX, y + oY).isCollectable())
 			{
 				map.setCell(new Cell(' ', "Air"), x + oX, y + oY);
+			}else{
+				if(map.getCell(x + oX, y + oY).isSolid())
+				{
+					oX = 0;
+					oY = 0;
+				}
 			}
 			x += oX;
 			y += oY;
