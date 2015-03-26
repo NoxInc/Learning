@@ -73,4 +73,14 @@ public class Map
 	{
 		return name;
 	}
+	
+	public int getMapX()
+	{
+		return board.length;
+	}
+	
+	public int getMapY()
+	{
+		return board[getMapX() - 1].length;
+	}
 }
