@@ -6,6 +6,7 @@ public class Cell
 	private String name;
 	private boolean isSolid;
 	private boolean isCollectable;
+	private boolean isMineable;
 	
 	public Cell(char symbol, String name)
 	{
@@ -21,6 +22,11 @@ public class Cell
 	public boolean isCollectable()
 	{
 		return isCollectable;
+	}
+	
+	public boolean isMineable()
+	{
+		return isMineable;
 	}
 	
 	public char getSymbol()
@@ -42,6 +48,12 @@ public class Cell
 	public Cell setCollectable()
 	{
 		isCollectable = true;
+		return this;
+	}
+	
+	public Cell setMineable()
+	{
+		isMineable = true;
 		return this;
 	}
 }
