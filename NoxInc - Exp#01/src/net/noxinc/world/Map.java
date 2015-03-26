@@ -69,6 +69,16 @@ public class Map
 		}
 	}
 	
+	public void setCell(Cell cell, int x, int y)
+	{
+		board[y][x] = cell;
+	}
+	
+	public Cell getCell(int x, int y)
+	{
+		return board[y][x];
+	}
+	
 	public String getMapName()
 	{
 		return name;
