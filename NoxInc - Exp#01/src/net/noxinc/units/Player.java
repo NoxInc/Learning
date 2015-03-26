@@ -76,22 +76,32 @@ public class Player
 		switch(direction)
 		{
 		case 1:
-			if(map.getCell(x, y - 1).isMineable())
-				map.setCell(new Cell(' ', "Air", map), x, y - 1);
+			mineCell(0, -1);
 			break;
 		case 2:
-			if(map.getCell(x, y + 1).isMineable())
-				map.setCell(new Cell(' ', "Air", map), x, y + 1);
+			mineCell(0, 1);
 			break;
 		case 3:
-			if(map.getCell(x + 1, y).isMineable())
-				map.setCell(new Cell(' ', "Air", map), x + 1, y);
+			mineCell(1, 0);
 			break;
-		case 4:
-			if(map.getCell(x - 1, y).isMineable())
-				map.setCell(new Cell(' ', "Air", map), x - 1, y);
+		case 4: 
+			mineCell(-1, 0);
 			break;
 		}
+	}
+	
+	private boolean mineCell(int oX, int oY)
+	{
+		if(map.getCell(x + oX, y + oY).isMineable())
+		{
+			if(inventory.addToInventory(map.getCell(oX + x, oY + y)))
+			{
+				map.setCell(new Cell(' ', "Air", map), x + oX, y + oY);
+				return true;
+			}else 
+				return false;
+		}else 
+			return false;
 	}
 	
 	public void modifyHpBy(int amount)
