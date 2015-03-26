@@ -1,5 +1,7 @@
 package net.noxinc.units;
 
+import java.util.Scanner;
+
 import net.noxinc.world.Map;
 import net.noxinc.world.cells.Cell;
 
@@ -21,7 +23,7 @@ public class Player
 		map.registerPlayer(this);
 	}
 	
-	public void moveTo(int oX, int oY, int facingDirection)
+	private void moveTo(int oX, int oY, int facingDirection)
 	{
 		this.facingDirection = facingDirection;
 		if(!(x + oX < 1 || x + oX > map.getMapX() - 2) && !(y + oY < 1 || y + oY > map.getMapY() - 2))
@@ -41,7 +43,27 @@ public class Player
 		}
 	}
 	
-	public void mine(int direction)
+	public void move(int direction, Scanner scanner)
+	{
+		switch(direction)
+		{
+		case 1:
+			moveTo(0, -1, 1);
+			break;
+		case 2:
+			moveTo(0, 1, 2);
+			break;
+		case 3:
+			moveTo(1, 0, 3);
+			break;
+		case 4:
+			moveTo(-1, 0, 4);
+		case 5:
+			mine(scanner.nextInt());
+		}
+	}
+	
+	private void mine(int direction)
 	{
 		switch(direction)
 		{
