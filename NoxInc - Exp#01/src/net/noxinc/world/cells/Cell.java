@@ -33,15 +33,15 @@ public class Cell
 		return name;
 	}
 	
-	public Cell setSolidState(boolean value)
+	public Cell setSolid()
 	{
-		isSolid = value;
+		isSolid = true;
 		return this;
 	}
 	
-	public Cell setCollectState(boolean value)
+	public Cell setCollectable()
 	{
-		isCollectable = value;
+		isCollectable = true;
 		return this;
 	}
 }
