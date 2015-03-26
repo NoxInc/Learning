@@ -15,7 +15,7 @@ public class Main
 		
 		p1.getMap().updateMap();
 		
-		while(true)
+		while(!p1.isDead())
 		{
 			switch(input.nextInt())
 			{

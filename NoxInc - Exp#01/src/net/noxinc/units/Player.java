@@ -8,6 +8,7 @@ public class Player
 	private int facingDirection;
 	private int x;
 	private int y;
+	private boolean isdead;
 	
 	public Player(Map map, int x, int y)
 	{
@@ -45,5 +46,15 @@ public class Player
 	public int getFacingDirection()
 	{
 		return facingDirection;
+	}
+	
+	public boolean isDead()
+	{
+		return isdead;
+	}
+	
+	public void setDead()
+	{
+		isdead = true;
 	}
 }
