@@ -1,7 +1,5 @@
 package net.noxinc.world;
 
-import java.util.ArrayList;
-
 import net.noxinc.units.Player;
 import net.noxinc.world.cells.Cell;
 
