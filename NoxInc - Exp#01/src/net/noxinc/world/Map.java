@@ -31,8 +31,7 @@ public class Map
 	public void updateMap()
 	{
 		String tmp = "";
-		int counter = 0;
-		for(int y = counter; y < board.length; y++)
+		for(int y = 0; y < board.length; y++)
 		{
 			for(int x = 0; x < board[y].length; x++)
 			{
