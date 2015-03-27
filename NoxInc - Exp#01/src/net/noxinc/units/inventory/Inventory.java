@@ -77,33 +77,31 @@ public class Inventory
 		
 		System.out.println("Select slot");
 		int slot = input.nextInt();
-		if(slot != 0)
+		
+		if((slot > 0 && slot <= inventory.size()))
 		{
-			if((slot > 0 || slot <= inventory.size()))
+			System.out.println("(1) Use Cell");
+			System.out.println("(2) Place Cell");
+			int tmp2 = input.nextInt();
+			switch(tmp2)
 			{
-				System.out.println("(1) Use Cell");
-				System.out.println("(2) Place Cell");
-				int tmp2 = input.nextInt();
-				switch(tmp2)
+			case 0:
+				break;
+			case 1:
+				if((inventory.get(slot - 1).use(player) == true))
 				{
-				case 0:
-					break;
-				case 1:
-					if(inventory.get(slot - 1).use(player))
+					System.out.println("used");
+					if(inventory.get(slot - 1).getCurrentStack() == 1)
 					{
-						System.out.println("used");
-						if(inventory.get(slot - 1).getCurrentStack() == 1)
-						{
-							inventory.remove(slot - 1);
-						}else{
-							inventory.get(slot - 1).modifyCurrentStackBy(-1);
-						}
+						inventory.remove(slot - 1);
+					}else{
+						inventory.get(slot - 1).modifyCurrentStackBy(-1);
 					}
-					break;
-				case 2:
-					player.placeCell(slot);
-					break;
 				}
+				break;
+			case 2:
+				player.placeCell(slot);
+				break;
 			}
 		}
 	}
