@@ -28,6 +28,7 @@ public class Map
 	
 	public void updateMap()
 	{
+		//----MAP----\\
 		String tmp = "";
 		for(int y = 0; y < board.length; y++)
 		{
@@ -43,6 +44,30 @@ public class Map
 					}else{
 						tmp += board[y][x].getSymbol();
 					}
+				}
+			}
+			
+			//----HUD----\\
+			switch(y)
+			{
+			case 0:
+				tmp += "  " + "__________";
+				break;
+			case 1:
+				tmp += " |" + "Health: " + player.getHealth();
+				break;
+			case 2:
+				tmp += " |" + "Inventory:|";
+				int counter = 1;
+				for(int i = 0; i <  player.getInventory().getMaxSlots(); i++)
+				{
+					if(i < player.getInventory().getSize())
+					{
+						tmp += player.getInventory().getSymbolFromIndex(i) + "|";
+					}else{
+						tmp += "" + counter + "|";
+					}
+					counter++;
 				}
 			}
 			if(!(y < y - 1))
@@ -64,13 +89,15 @@ public class Map
 		{
 			for(int x = 1; x < board[y].length - 1; x++)
 			{
-				board[y][x] = new Cell(' ', "Air");
+				board[y][x] = new Cell(' ', "Air", this);
 			}
 		}
 	}
 	
 	public void setCell(Cell cell, int x, int y)
 	{
+		cell.setX(x);
+		cell.setY(y);
 		board[y][x] = cell;
 	}
 	
