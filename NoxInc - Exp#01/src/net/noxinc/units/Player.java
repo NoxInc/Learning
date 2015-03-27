@@ -26,6 +26,11 @@ public class Player
 		map.registerPlayer(this);
 	}
 	
+	public void placeCell(int slot)
+	{
+		map.setCell(inventory.placeCell(slot - 1), x, y);
+	}
+	
 	private void moveTo(int oX, int oY, int facingDirection)
 	{
 		this.facingDirection = facingDirection;
@@ -127,6 +132,11 @@ public class Player
 	public int getHealth()
 	{
 		return health;
+	}
+	
+	public Inventory getInventory()
+	{
+		return inventory;
 	}
 	
 	public int getFacingDirection()
