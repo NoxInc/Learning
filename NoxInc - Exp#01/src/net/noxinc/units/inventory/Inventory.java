@@ -26,11 +26,18 @@ public class Inventory
 	
 	public boolean addToInventory(Cell cell)
 	{
-		if(inventory.contains(cell) && cell.getCurrentStack() < cell.getMaxStackSize())
+		int tmp = 0;
+		if(inventory.contains(cell))
+		{
+			System.out.println("test");
+			tmp = inventory.indexOf(cell);
+		}
+		
+		if(inventory.contains(cell) && inventory.get(tmp).getCurrentStack() < inventory.get(tmp).getMaxStackSize())
 		{
 			cell.modifyCurrentStackBy(1);
 			return true;
-		}else if(inventory.size() < maxSlots && cell.getCurrentStack() >= cell.getMaxStackSize())
+		}else if(inventory.size() < maxSlots && inventory.get(tmp).getCurrentStack() >= inventory.get(tmp).getMaxStackSize())
 		{
 			inventory.add(cell);
 			cell.modifyCurrentStackBy(1);
@@ -44,6 +51,36 @@ public class Inventory
 			System.out.println("Cant add cell to inventory");
 			return false;
 		}
+	}
+	
+	public char getSymbolFromIndex(int idx)
+	{
+		return inventory.get(idx).getSymbol();
+	}
+	
+	public Cell placeCell(int idx)
+	{
+		Cell tmp;
+		if(inventory.get(idx).getCurrentStack() > 1)
+		{
+			tmp = inventory.get(idx).modifyCurrentStackBy(-inventory.get(idx).getCurrentStack() + 1);
+			inventory.get(idx).modifyCurrentStackBy(-1);
+		}else{
+			tmp = inventory.get(idx);
+			inventory.remove(idx);
+		}
+		return tmp;
+		
+	}
+	
+	public int getMaxSlots()
+	{
+		return maxSlots;
+	}
+	
+	public int getSize()
+	{
+		return inventory.size();
 	}
 	
 	public void open()
@@ -62,6 +99,7 @@ public class Inventory
 			if((intTmp > 0 || intTmp <= inventory.size() - 1))
 			{
 				System.out.println("(1) Use Cell");
+				System.out.println("(2) Place Cell");
 				int tmp2 = input.nextInt();
 				switch(tmp2)
 				{
@@ -78,6 +116,9 @@ public class Inventory
 							inventory.get(intTmp - 1).modifyCurrentStackBy(-1);
 						}
 					}
+					break;
+				case 2:
+					player.placeCell(intTmp);
 					break;
 				}
 			}
