@@ -5,7 +5,7 @@ import net.noxinc.world.Map;
 
 public class CellPotion extends Cell 
 {
-	private int healing;
+	private int healing = 5;
 
 	public CellPotion(Map map, int healing) {
 		super('H', "", map);
@@ -17,7 +17,7 @@ public class CellPotion extends Cell
 	
 	@Override
 	public boolean use(Player player){
-		player.modifyHpBy(5);
+		player.modifyHpBy(healing);
 		return true;
 	}
 
