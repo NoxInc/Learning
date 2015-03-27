@@ -26,19 +26,9 @@ public class Inventory
 	
 	public boolean addToInventory(Cell cell)
 	{
-		if(inventory.contains(cell) && cell.getCurrentStack() < cell.getMaxStackSize())
-		{
-			cell.modifyCurrentStackBy(1);
-			return true;
-		}else if(inventory.size() < maxSlots && cell.getCurrentStack() >= cell.getMaxStackSize())
+		if(inventory.size() < maxSlots)
 		{
 			inventory.add(cell);
-			cell.modifyCurrentStackBy(1);
-			return true;
-		}else if(inventory.size() < maxSlots)
-		{
-			inventory.add(cell);
-			cell.modifyCurrentStackBy(1);
 			return true;
 		}else{
 			System.out.println("Cant add cell to inventory");
@@ -54,14 +44,14 @@ public class Inventory
 	public Cell placeCell(int idx)
 	{
 		Cell tmp;
-		if(inventory.get(idx).getCurrentStack() > 1)
-		{
-			tmp = inventory.get(idx).modifyCurrentStackBy(-inventory.get(idx).getCurrentStack() + 1);
-			inventory.get(idx).modifyCurrentStackBy(-1);
-		}else{
+//		if(inventory.get(idx).getCurrentStack() > 1)
+//		{
+//			tmp = inventory.get(idx).modifyCurrentStackBy(-inventory.get(idx).getCurrentStack() + 1);
+//			inventory.get(idx).modifyCurrentStackBy(-1);
+//		}else{
 			tmp = inventory.get(idx);
 			inventory.remove(idx);
-		}
+//		}
 		return tmp;
 		
 	}
@@ -86,10 +76,10 @@ public class Inventory
 		System.out.println(tmp);
 		
 		System.out.println("Select slot");
-		int intTmp = input.nextInt();
-		if(intTmp != 0)
+		int slot = input.nextInt();
+		if(slot != 0)
 		{
-			if((intTmp > 0 || intTmp <= inventory.size() - 1))
+			if((slot > 0 || slot <= inventory.size()))
 			{
 				System.out.println("(1) Use Cell");
 				System.out.println("(2) Place Cell");
@@ -99,19 +89,19 @@ public class Inventory
 				case 0:
 					break;
 				case 1:
-					if(inventory.get(intTmp - 1).use(player))
+					if(inventory.get(slot - 1).use(player))
 					{
 						System.out.println("used");
-						if(inventory.get(intTmp - 1).getCurrentStack() == 1)
+						if(inventory.get(slot - 1).getCurrentStack() == 1)
 						{
-							inventory.remove(intTmp - 1);
+							inventory.remove(slot - 1);
 						}else{
-							inventory.get(intTmp - 1).modifyCurrentStackBy(-1);
+							inventory.get(slot - 1).modifyCurrentStackBy(-1);
 						}
 					}
 					break;
 				case 2:
-					player.placeCell(intTmp);
+					player.placeCell(slot);
 					break;
 				}
 			}
