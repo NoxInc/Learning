@@ -28,8 +28,8 @@ public class Map
 	
 	public void updateMap()
 	{
+		//----MAP----\\
 		String tmp = "";
-		System.out.println(player.getHealth());
 		for(int y = 0; y < board.length; y++)
 		{
 			for(int x = 0; x < board[y].length; x++)
@@ -44,6 +44,30 @@ public class Map
 					}else{
 						tmp += board[y][x].getSymbol();
 					}
+				}
+			}
+			
+			//----HUD----\\
+			switch(y)
+			{
+			case 0:
+				tmp += "  " + "__________";
+				break;
+			case 1:
+				tmp += " |" + "Health: " + player.getHealth();
+				break;
+			case 2:
+				tmp += " |" + "Inventory:|";
+				int counter = 1;
+				for(int i = 0; i <  player.getInventory().getMaxSlots(); i++)
+				{
+					if(i < player.getInventory().getSize())
+					{
+						tmp += player.getInventory().getSymbolFromIndex(i) + "|";
+					}else{
+						tmp += "" + counter + "|";
+					}
+					counter++;
 				}
 			}
 			if(!(y < y - 1))
