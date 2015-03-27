@@ -13,7 +13,7 @@ public class Cell
 	private boolean isCollectable;
 	private boolean isMineable;
 	private int maxStackSize = 3;
-	private int currentStack = 0;
+	private int currentStack = 1;
 	
 	public Cell(char symbol, String name, Map map)
 	{
