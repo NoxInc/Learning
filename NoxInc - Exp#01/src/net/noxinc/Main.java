@@ -16,6 +16,7 @@ public class Main
 		Player p1 = new Player("NoxInc", InitMap.registerMap(new Map("Debug")), 2, 2);
 		
 		p1.getMap().setCell(new CellPotion(p1.getMap(), 5), 4, 4);
+		p1.getMap().setCell(new CellPotion(p1.getMap(), 5), 3, 4);
 		p1.getMap().setCell(new Cell('+', "Wall", p1.getMap()).setSolid().setMineable(), 4, 5);
 		
 		p1.getMap().updateMap();
