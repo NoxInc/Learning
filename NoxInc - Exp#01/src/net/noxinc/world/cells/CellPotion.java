@@ -12,7 +12,7 @@ public class CellPotion extends Cell
 		this.healing = healing;
 		setCollectable();
 		setMaxStackSize(5);
-		modifyCurrentStackBy(4);
+		modifyCurrentStackBy(5);
 		setName("HP-Pot (" + healing + ")");
 	}
 	
