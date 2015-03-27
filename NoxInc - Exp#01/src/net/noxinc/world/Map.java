@@ -96,6 +96,8 @@ public class Map
 	
 	public void setCell(Cell cell, int x, int y)
 	{
+		cell.setX(x);
+		cell.setY(y);
 		board[y][x] = cell;
 	}
 	

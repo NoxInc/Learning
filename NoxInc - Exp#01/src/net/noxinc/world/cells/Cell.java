@@ -14,6 +14,8 @@ public class Cell
 	private boolean isMineable;
 	private int maxStackSize = 3;
 	private int currentStack = 1;
+	private int x;
+	private int y;
 	
 	public Cell(char symbol, String name, Map map)
 	{
@@ -96,5 +98,21 @@ public class Cell
 	{
 		this.name = name;
 		return this;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }
