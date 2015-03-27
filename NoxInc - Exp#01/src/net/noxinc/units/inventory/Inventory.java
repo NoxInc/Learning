@@ -26,18 +26,11 @@ public class Inventory
 	
 	public boolean addToInventory(Cell cell)
 	{
-		int tmp = 0;
-		if(inventory.contains(cell))
-		{
-			System.out.println("test");
-			tmp = inventory.indexOf(cell);
-		}
-		
-		if(inventory.contains(cell) && inventory.get(tmp).getCurrentStack() < inventory.get(tmp).getMaxStackSize())
+		if(inventory.contains(cell) && cell.getCurrentStack() < cell.getMaxStackSize())
 		{
 			cell.modifyCurrentStackBy(1);
 			return true;
-		}else if(inventory.size() < maxSlots && inventory.get(tmp).getCurrentStack() >= inventory.get(tmp).getMaxStackSize())
+		}else if(inventory.size() < maxSlots && cell.getCurrentStack() >= cell.getMaxStackSize())
 		{
 			inventory.add(cell);
 			cell.modifyCurrentStackBy(1);
